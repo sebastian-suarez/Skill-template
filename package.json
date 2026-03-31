@@ -1,23 +1,28 @@
 {
-	"name": "typescript-template",
+	"name": "skill-template",
 	"version": "1.0.0",
-	"description": "TypeScript template for Node.js with ESM, Jest, XO, and Prettier.",
+	"description": "TypeScript template for building Agent Skills—bundle zero-dependency ESM scripts with tsup, ship SKILL.md + assets, and pack a distributable .skill archive.",
 	"keywords": [
-		"TypeScript",
-		"template",
-		"Node.js",
-		"ESM",
-		"Jest",
-		"XO",
-		"Prettier"
+		"skill-template",
+		"agent-skill",
+		"cursor",
+		"claude",
+		"typescript",
+		"tsup",
+		"nodejs",
+		"esm",
+		"jest",
+		"xo",
+		"prettier",
+		"skill"
 	],
-	"homepage": "https://github.com/sebastian-suarez/TypeScript-template#readme",
+	"homepage": "https://github.com/sebastian-suarez/Skill-template#readme",
 	"bugs": {
-		"url": "https://github.com/sebastian-suarez/TypeScript-template/issues"
+		"url": "https://github.com/sebastian-suarez/Skill-template/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/sebastian-suarez/TypeScript-template.git"
+		"url": "git+https://github.com/sebastian-suarez/Skill-template.git"
 	},
 	"license": "MIT",
 	"author": "Sebastian Suarez <261091557+sebastian-suarez@users.noreply.github.com> (https://www.sebastiansuarez.dev)",
@@ -30,11 +35,15 @@
 		"node": ">=18"
 	},
 	"scripts": {
-		"start": "tsx ./src/index.js",
+		"start": "tsx ./src/index.ts",
 		"test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
 		"lint": "xo --fix",
 		"format": "prettier --write .",
-		"prepare": "husky"
+		"prepare": "husky",
+		"build": "tsup",
+		"build:skill": "npm run lint && npm run test && npm run build && bash ./build-skill.sh",
+		"build:skill:fast": "npm run build && bash ./build-skill.sh",
+		"clean": "rm -rf dist"
 	},
 	"devDependencies": {
 		"@tsconfig/node24": "^24.0.4",
@@ -44,6 +53,7 @@
 		"lint-staged": "^16.2.7",
 		"prettier": "3.8.1",
 		"ts-jest": "^29.4.6",
+		"tsup": "^8.5.0",
 		"tsx": "^4.21.0",
 		"typescript": "^5.9.3",
 		"xo": "^1.2.3"

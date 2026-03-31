@@ -1,0 +1,47 @@
+{
+	"skill_name": "typescript-template",
+	"evals": [
+		{
+			"id": 1,
+			"prompt": "Create a new TypeScript project called my-api",
+			"expected_output": "Scaffolds a complete TS project with all config files",
+			"files": [],
+			"expectations": [
+				"A directory called my-api is created",
+				"package.json exists with name set to my-api",
+				"package.json has type set to module",
+				"tsconfig.json exists and extends @tsconfig/node24",
+				"jest.config.ts exists with ESM preset",
+				"xo.config.ts exists with prettier enabled",
+				"src/index.ts exists",
+				"src/modules/greet.ts exists",
+				"tests/index.test.ts exists",
+				".husky/pre-commit exists and is executable"
+			]
+		},
+		{
+			"id": 2,
+			"prompt": "Set up a TS starter with Jest and linting for a CLI tool",
+			"expected_output": "Triggers the skill and scaffolds the project, adapting for CLI context",
+			"files": [],
+			"expectations": [
+				"The skill is triggered (not answered from general knowledge)",
+				"The scaffold script is executed",
+				"All config files are present in the output",
+				"The user is told about npm install as a next step"
+			]
+		},
+		{
+			"id": 3,
+			"prompt": "I need a Node.js ESM project with TypeScript, testing, and formatting already set up",
+			"expected_output": "Recognizes this as a scaffold request and uses the skill",
+			"files": [],
+			"expectations": [
+				"The skill is triggered by this phrasing",
+				"A project directory is created",
+				"The path aliases #src/* and #modules/* are configured",
+				"Jest can run with the ESM preset"
+			]
+		}
+	]
+}
