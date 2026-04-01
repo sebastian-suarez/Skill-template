@@ -1,4 +1,15 @@
-// Test file to check if the module resolution works correctly with the "imports" field in package.json
-import greet from "#modules/greet.js";
+/* eslint-disable unicorn/no-process-exit */
+import process from "node:process";
 
-console.log(greet("World"));
+const input = process.argv.slice(2).join(" ");
+
+if (!input) {
+	console.log(JSON.stringify({ error: "No text provided" }));
+	process.exit(1);
+}
+
+const words = input.trim().split(/\s+/).length;
+const chars = input.length;
+const sentences = input.split(/[.!?]+/).filter(Boolean).length;
+
+console.log(JSON.stringify({ words, chars, sentences }));

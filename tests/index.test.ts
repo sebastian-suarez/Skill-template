@@ -1,6 +1,7 @@
-import greet from "#modules/greet.js";
+import { execSync } from "node:child_process";
 
-test("Greet", () => {
-	const result = greet("World");
-	expect(result).toBe("Hello, World!");
+test("counts words correctly", () => {
+	const result = execSync('tsx src/index.ts "hello world foo"').toString();
+	const parsed = JSON.parse(result) as { words: number };
+	expect(parsed.words).toBe(3);
 });
